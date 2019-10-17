@@ -1,18 +1,23 @@
 import React from 'react';
-import InputText from './InputText';
 
-const DataInput = ({amount, duration, onAmountChange, onDurationChange, onSubmit}) => (
-    <div>
-        <InputText 
+const DataInput = ({ amount, duration, onAmountChange, onDurationChange, onSubmit }) => (
+    <div data-test="DataInputComponent" className="dataInputContainer">
+        <input
+            className="text-input"
+            data-test="amountInput"
+            type="text"
             placeholder="Loan Amount"
             value={amount}
             onChange={onAmountChange}
         />
-        <InputText
+        <input
+            className="text-input"
+            data-test="durationInput"
+            type="text"
             placeholder="Loan Duration"
             value={duration}
             onChange={onDurationChange} />
-        <button onClick={onSubmit}>SUBMIT</button>
+        <button className="button" onClick={onSubmit}>SUBMIT</button>
     </div>
 );
 

@@ -1,9 +1,17 @@
-.App {
-  text-align: center;
+html {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.App {
+  text-align: center;
 }
 
 .App-header {
@@ -17,6 +25,73 @@
   color: white;
 }
 
-.App-link {
+.title {
   color: #09d3ac;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.text-input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px auto 0 auto;
+    padding: 15px 0 15px 10px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.button {
+  background: #09d3ac;
+  border: 1px solid white;
+  color: black;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.dataInputContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 21px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.resultContainer{
+    padding: 70px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.currency{
+  font-weight: bold;
+  color: #09d3ac;
+}
+
+
+@media (min-width: 1025px)  {
+  .resultContainer{
+    padding: 100px;
+  }
+
+  .dataInputContainer{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .button{
+    width: 30%;
+  }
+
+  .text-input{
+    width: 30%;
+  }
 }
