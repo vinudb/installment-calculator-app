@@ -25,9 +25,9 @@ class InstallmentCalcContainer extends React.Component {
 
     onSubmit = () => {
         if (!this.state.amount || parseFloat(this.state.amount) < 10000.00) {
-            console.log("amount is too low for the loan")
+            alert("amount is too low for the loan")
         } else if (!this.state.duration || parseInt(this.state.duration) < 1) {
-            console.log('Minimum duration is 1 year')
+            alert('Minimum duration is 1 year')
         } else {
             this.setState({ showLoader: true });
             this.getMonthlyInstallment()
