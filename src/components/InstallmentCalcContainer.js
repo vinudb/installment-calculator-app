@@ -6,30 +6,31 @@ class InstallmentCalcContainer extends React.Component {
     state = {
         amount: "",
         duration: "",
-        monthlyInstallment: 0
+        monthlyInstallment: 0,
+        error:""
     }
 
     onAmountChange = (e) => {
         const amount = e.target.value;
         if (!amount || (amount.match(/^\d{1,}(\.\d{0,2})?$/) && parseFloat(amount) <= 100000.00)) {
-            this.setState({ amount });
+            this.setState({ amount, error:"" });
         }
     }
 
     onDurationChange = (e) => {
         const duration = e.target.value;
         if (!duration || (duration.match(/^\d{1,}?$/) && parseFloat(duration) <= 5)) {
-            this.setState({ duration });
+            this.setState({ duration, error: "" });
         }
     }
 
     onSubmit = () => {
         if (!this.state.amount || parseFloat(this.state.amount) < 10000.00) {
-            alert("amount is too low for the loan")
+            this.setState({error: "Amount is too low for the loan"})
         } else if (!this.state.duration || parseInt(this.state.duration) < 1) {
-            alert('Minimum duration is 1 year')
+            this.setState({error: 'Minimum duration is 1 year'})
         } else {
-            this.setState({ showLoader: true });
+            this.setState({ showLoader: true, error: "" });
             this.getMonthlyInstallment()
                 .then((data => {
                     this.setState({ monthlyInstallment: data, showLoader: false })
@@ -62,6 +63,7 @@ class InstallmentCalcContainer extends React.Component {
                     onSubmit={this.onSubmit}
                     amount={this.state.amount}
                     duration={this.state.duration}
+                    error={this.state.error}
                 />
                 <Result monthlyInstallment={this.state.monthlyInstallment} />
             </div>
